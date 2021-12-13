@@ -1,35 +1,11 @@
-<?php
-require_once 'config.php';
-// ESTILO POR PROCEDIMIENTOS
-$host = SERVIDOR;
-$user = USUARIO;
-$pass = PASSWORD;
-$db = BD;
-
-// Crear la conexión
-$conn = mysqli_connect($host, $user, $pass, $db);
-
-// Checkear la conexión
-if (!$conn) {
-    echo "Error: No se pudo conectar a MySQL." . PHP_EOL;
-    echo "Error de depuración: " . mysqli_connect_errno() . PHP_EOL;
-    exit;
-} else {
-
-	mysqli_set_charset($conn, "utf8");
-
-}
-
-/* //ESTILO ORIENTADO A OBJETOS
-// Crear la conexión
-$conn = new mysqli('localhost', 'root', '', 'imagenes');
-
-// Checkear la conexión
-if ($conn->connect_errno) {
-	die("Error: No se pudo conectar a MySQL: " . $conn->connect_errno);
-} else {
-	$conn->set_charset("utf8");
-}
-*/
-
-?>
+<?php 
+require_once("config.php");
+ $servidor="mysql:dbname=".BD.";host=".SERVIDOR;
+ try{
+     $pdo=new PDO($servidor,USUARIO,PASSWORD,array(PDO::MYSQL_ATTR_INIT_COMMAND=>"SET NAMES UTF8"));
+    // echo "<script> alert('conexion establecida')</script>";
+ }catch(PDOException $e){
+    echo $e->getMessage();
+    echo "<script> alert('Error de conexion')</script>";
+ }
+ ?>

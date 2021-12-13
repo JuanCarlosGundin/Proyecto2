@@ -1,6 +1,25 @@
 <?php
-require_once '../services/config.php';
-require_once '../services/connection.php';
+include '../services/connection.php';
+session_start();
+if(!isset($_GET['option'])){
+$option=1;}else{
+    $option=$_GET['option'];
+}
+/* Controla que la sesión esté iniciada */
+if (!isset($_SESSION['email'])) {
+    echo"<script>window.location.replace('login.php')</script>";
+}
+$cadena = substr ( $_SESSION['email'], 0, -10);
+if(isset($_REQUEST['id'])){
+    $id=$_REQUEST['id'];
+    }
+    $stmt = $pdo->prepare("SELECT * FROM tbl_lugar 
+    inner join tbl_origen 
+    on tbl_lugar.id_origen=tbl_origen.id_origen 
+    where tbl_origen.id_origen=?");
+    $stmt->bindParam(1,$option);
+    $stmt->execute();
+    $mesas=$stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,18 +35,6 @@ require_once '../services/connection.php';
 </head>
 
 <body id="portada">
-        <?php
-            include '../services/connection.php';
-            session_start();
-            $id=0;
-            if(!isset($_SESSION['option'])){
-            $_SESSION['option']=1;}
-            /* Controla que la sesión esté iniciada */
-            if (!isset($_SESSION['email'])) {
-            header('Location: login.php');
-            }
-            $cadena = substr ( $_SESSION['email'], 0, -10);
-        ?>
     <div class="row2" id="section-1">
         <div class="usuario column-1">
         <ul class="padding-lat">
@@ -47,9 +54,9 @@ require_once '../services/connection.php';
         <div class="menu">
             <nav>
                 <ul>
-                    <li class="li_barra"><a class="barra" <?php if($_SESSION['option']==1){echo "style='background: #c09164;'";}?> href="../processes/opcionMain.php?id=1">Terrazas</a></li>
-                    <li class="li_barra"><a class="barra" <?php if($_SESSION['option']==2){echo "style='background: #c09164;'";}?> href="../processes/opcionMain.php?id=2">Comedores</a></li>
-                    <li class="li_barra"><a class="barra" <?php if($_SESSION['option']==3){echo "style='background: #c09164;'";}?> href="../processes/opcionMain.php?id=3">Salas Privadas</a></li>
+                    <li class="li_barra"><a class="barra" <?php if($option==1){echo "style='background: #c09164;'";}?> href="inicio.php?option=1">Terrazas</a></li>
+                    <li class="li_barra"><a class="barra" <?php if($option==2){echo "style='background: #c09164;'";}?> href="inicio.php?option=2">Comedores</a></li>
+                    <li class="li_barra"><a class="barra" <?php if($option==3){echo "style='background: #c09164;'";}?> href="inicio.php?option=3">Salas Privadas</a></li>
                 </ul>
             </nav>
         </div> 
@@ -57,65 +64,20 @@ require_once '../services/connection.php';
     <div class="flex" id="flex">
         <div class="contenido" id="contenido">
         <div class="div_botones" id="div_botones">
-                    <?php
-                    if(isset($_REQUEST['id'])){
-                        $id=$_REQUEST['id'];
-                        }
-                    if($_SESSION['option']==1){
-                    ?>
-
                     <input type="hidden" value="<?php echo $id;?>" id="arreglo">
                     <div class="div_terr">
+                        <?php
+                        foreach($mesas as $mesa){
+                        ?>
                         <div class="div_terr_">
-                        <a id='btn_terraza1' href="./inicio.php?id=1" ><img class='img_terraza'></a><br>Terraza Norte
+                        <?php $id=$mesa['id_lugar'];?>
+                        <a id='btn_terraza1' href=<?php echo "./mesas.php?".$id;?>><img class='img_terraza'></a><br><?php echo"{$mesa['nom_lugar']}";?>
                         </div>
-                        <div class="div_terr_">
-                        <a id='btn_terraza2' href="./inicio.php?id=4" ><img class='img_terraza'></a><br>Terraza Sur
-                        </div>
-                        <div class="div_terr_">
-                        <a id='btn_terraza3' href="./inicio.php?id=5" ><img class='img_terraza'></a><br>Terraza Oeste
-                        </div>
+                        <?php
+                        }
+                        ?>
                         </div>
                     <!--<button class='btn_terrazas' id='btn_terraza1' onclick='return btn_terraza1(); $id=1'><img class='img_terraza'>Terraza Norte</button>-->
-
-                    <?php
-                    }
-                    else if($_SESSION['option']==2){
-                    ?>
-                    <input type="hidden" value="<?php echo $id;?>" id="arreglo">
-                        <div class="div_terr">
-                        <div class="div_terr_">
-                        <a id='btn_terraza1' href="./inicio.php?id=3" ><img class='img_comedor'></a><br>Comedor principal
-                        </div>
-                        <div class="div_terr_">
-                        <a id='btn_terraza2' href="./inicio.php?id=7" ><img class='img_comedor'></a><br>Comedor Gourmet
-                        </div>
-                        <div class="div_terr_">
-                        <a id='btn_terraza3' href="./inicio.php?id=8" ><img class='img_comedor'></a><br>Comedor Deluxe
-                        </div>  
-                        </div>  
-                    <?php
-                    }
-                     elseif($_SESSION['option']==3){
-                    ?>
-                    <input type="hidden" value="<?php echo $id;?>" id="arreglo">
-                    <div class="div_terr">
-                        <div class="div_terr_">
-                        <a id='btn_terraza1' href="./inicio.php?id=2" ><img class='img_sala'></a><br>Sala privada 1
-                        </div>
-                        <div class="div_terr_">
-                        <a id='btn_terraza2' href="./inicio.php?id=6" ><img class='img_sala'></a><br>Sala privada 2
-                        </div>
-                        <div class="div_terr_">
-                        <a id='btn_terraza3' href="./inicio.php?id=9" ><img class='img_sala'></a><br>Sala privada 3
-                        </div>
-                        <div class="div_terr_">
-                        <a id='btn_terraza4' href="./inicio.php?id=10" ><img class='img_sala'></a><br>Sala privada 4
-                        </div>
-                    </div>
-                    <?php
-                    }
-                ?>
                 </div>
 
                 <div id='modal_terrazas' class='modal'>
@@ -188,8 +150,6 @@ require_once '../services/connection.php';
                 from tbl_fecha
                 inner join tbl_mesa
                 on tbl_fecha.id_mesa=tbl_mesa.id_mesa");
-
-
     foreach ($log as $registro){
     ?>
     <tr>

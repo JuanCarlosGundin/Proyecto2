@@ -1,7 +1,6 @@
 <?php
 require_once '../services/config.php';
 require_once '../services/connection.php';
-session_start();
 $estado=$_POST['estado'];
 $lugar=$_POST['lugar'];
 $id=$_POST['id'];
