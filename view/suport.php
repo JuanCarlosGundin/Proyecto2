@@ -1,27 +1,15 @@
-<div id="myModal" class="modal">
-            <!-- Contenido del Boton -->
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <div id="content_incidencias"></div>
-            </div>
-        </div>
-        <img class="logo_footer2" id="myBtn2" onclick="return btn_log();">
-            <!-- Boton -->
-        <div id="myModal2" class="modal">
-            <!-- Contenido del Boton -->
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <div id="content_log">
-                    <?php
-                $log = mysqli_query($conn,"SELECT tbl_fecha.fecha_lugar_reserva as lugar
-                ,tbl_mesa.numero_mesa as numero
-                ,tbl_fecha.fecha_reserva as dia
-                ,tbl_fecha.hora_reserva as entrada
-                ,tbl_fecha.hora_salida as salida
-                ,tbl_fecha.id_fecha as id
-                from tbl_fecha
-                inner join tbl_mesa
-                on tbl_fecha.id_mesa=tbl_mesa.id_mesa");
+<?php
+$log=$pdo->prepare("SELECT tbl_fecha.fecha_lugar_reserva as lugar
+,tbl_mesa.numero_mesa as numero
+,tbl_fecha.fecha_reserva as dia
+,tbl_fecha.hora_reserva as entrada
+,tbl_fecha.hora_salida as salida
+,tbl_fecha.id_fecha as id
+from tbl_fecha
+inner join tbl_mesa
+on tbl_fecha.id_mesa=tbl_mesa.id_mesa");
+$log->execute();
+$log=$sentencia->fetchAll(PDO::FETCH_ASSOC);
     foreach ($log as $registro){
     ?>
     <tr>
@@ -40,6 +28,3 @@
 <?php 
 }
 ?>
-                </div>
-            </div>
-        </div>

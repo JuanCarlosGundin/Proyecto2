@@ -1,3 +1,3 @@
 <?php
-$nuevaURL = "./view/login.php";
-header('Location: '.$nuevaURL);
+echo"<script>window.location.replace('./view/login.php')</script>";
+?>

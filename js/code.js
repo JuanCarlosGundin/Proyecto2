@@ -1,9 +1,3 @@
-window.onload = function() {
-    if (document.getElementById('arreglo').value != 0) {
-        btn_terraza1()
-    }
-}
-
 function validar() {
     var email = document.getElementById('email').value;
     var password = document.getElementById('password').value;
