@@ -70,8 +70,7 @@ if(isset($_REQUEST['id'])){
                         foreach($mesas as $mesa){
                         ?>
                         <div class="div_terr_">
-                        <?php $id=$mesa['id_lugar'];?>
-                        <a id='btn_terraza1' href=<?php echo "./mesas.php?".$id;?>><img class='img_terraza'></a><br><?php echo"{$mesa['nom_lugar']}";?>
+                        <a id='btn_terraza1' href=<?php echo "./mesas.php?id={$mesa['id_lugar']}&nom={$mesa['nom_lugar']}";?>><img class='img_terraza'></a><br><?php echo"{$mesa['nom_lugar']}";?>
                         </div>
                         <?php
                         }
@@ -124,15 +123,6 @@ if(isset($_REQUEST['id'])){
         </div>
     </div>
     <footer>
-    <img class="logo_footer" id="myBtn" onclick="return btn_incidencias();">
-            <!-- Boton -->
-        <div id="myModal" class="modal">
-            <!-- Contenido del Boton -->
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <div id="content_incidencias"></div>
-            </div>
-        </div>
         <a href="historial.php"><img class="logo_footer2" id="myBtn2" ></a>
         </div>
     </footer>

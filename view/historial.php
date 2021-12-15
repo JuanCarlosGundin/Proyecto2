@@ -1,5 +1,9 @@
 <?php
 include '../services/connection.php';
+session_start();
+if (!isset($_SESSION['email'])) {
+    echo"<script>window.location.replace('login.php')</script>";
+}
 if(isset($_GET['loc'])){
     $loc=$_GET['loc'];
     $fecha=$_GET['fecha'];
@@ -67,7 +71,7 @@ $login=$log->fetchAll(PDO::FETCH_ASSOC);
             <input type='text' name='entrada' ></th>
                     <th><p>Hora de salida</p>
             <input type='text' name='salida'></th>
-            <th><input type='submit' value='Filtrar' class="btn-filtro"></th>
+            <th><div class="filtrar"><input class="filtrar" type='submit' value='Filtrar' class="btn-filtro"></div></th>
                     </form>
                 </tr>
      </table>
@@ -128,7 +132,7 @@ $login=$log->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </div>
     <footer>
-    <img class="logo_footer" id="myBtn" onclick="return btn_incidencias();">
+    <div class="logo_footer">
     </footer>
 </body>
 

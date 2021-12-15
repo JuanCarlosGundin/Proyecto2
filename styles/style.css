@@ -181,6 +181,15 @@ input[type=submit]:hover {
     text-decoration: none;
     transition: all ease 0.5s;
     background: #f1821a;
+    
+}
+.filtrar{
+    padding-right: 100px;
+    padding-top: 10px;
+    font-size: 1vw;
+}
+input.filtrar{
+    background-color: #f1821a;
 }
 
 .btn-logout:after,
@@ -293,7 +302,7 @@ nav {
 .contenido {
     color: white;
     width: 85%;
-    height: 400px;
+    height: auto;
     /*border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;*/
     background-color: #c09164;
@@ -305,6 +314,7 @@ nav {
     display: flex;
     align-items: center;
     justify-content: center;
+    height: auto;
     /*boton incidencias*/
     /* The Modal (background) */
 }
@@ -543,7 +553,6 @@ footer {
 .logo_footer {
     width: 70px;
     height: 70px;
-    background-image: url('../img/exclamation-circle-solid.svg');
     cursor: pointer;
     padding: 30px 40px 40px 30px;
     background-repeat: no-repeat;
