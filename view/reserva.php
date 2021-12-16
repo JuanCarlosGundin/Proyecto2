@@ -4,16 +4,8 @@ session_start();
 if (!isset($_SESSION['email'])) {
     echo"<script>window.location.replace('login.php')</script>";
 }
-$id=$_GET['id'];
-$log=$pdo->prepare("SELECT *
-from tbl_lugar
-inner join tbl_mesa
-on tbl_lugar.id_lugar=tbl_mesa.id_lugar
-where tbl_lugar.id_lugar = ?");
-$log->bindParam(1, $id);
-$log->execute();
-$login=$log->fetchAll(PDO::FETCH_ASSOC);
-$nom2=$login[0]['nom_lugar'];
+$idlugar=$_POST['idlugar'];
+$idmesa=$_POST['idmesa'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,43 +32,35 @@ $nom2=$login[0]['nom_lugar'];
         </div>
         <div class="logout column-1">
             <ul class="padding-lat">
-            <b><a style="text-decoration:none" class="btn-logout" href="inicio.php">Volver</a></b>
+            <b><a style="text-decoration:none" class="btn-logout" href=<?php echo "mesas.php?id=".$idlugar ; ?>>Volver</a></b>
             </ul>
         </div>
     </div>
     <div class="flex">
         <div class="menu">
-    <h1 <?php echo "style='color: black;'";?> >Mesas de <?php echo $nom2;?>
-        </div> 
+    <h1 <?php echo "style='color: black;'";?> >Reserva la mesa</div> 
     </div>
     <div class="flex" id="flex">
         <div class="contenido" id="contenido">
         <div class="div_botones" id="div_botones">
-        <table class="table">
-                <tr>
-                    <th>Mesa</th>
-                    <th>Sillas</th>
-                    <th>Disponibilidad</th>
-                    <th></th>
-                    <th></th>
-                </tr>
-                <?php
-                foreach ($login as $registro){
-                ?>
+        <div class="reserva">
+            <div class=alert id='mensaje'></div>
+            <table class="table">
             <tr>
-                <td><?php echo"mesa numero {$registro['numero_mesa']}";?></td>
-                <td><?php echo"{$registro['sillas_mesa']}";?></td>
-                <td><?php echo"{$registro['estado_mesa']}";?></td>
-                <td><form method="POST" action="reserva.php">
-                <input type="hidden" value="<?php echo $id ;?>" name="idlugar">
-                <input type="hidden" value="<?php echo"{$registro['id_mesa']}";?>" name="idmesa">
-                <input type="submit" <?php echo "style='background: white;'";?> value="Reservar" name="reservar"></form>
-                </td>
+            <td><p>Nombre</p></td>
+            <td><p>Fecha</p></td>
+            <td><p>Hora</p></td>
             </tr>
-            <?php
-            }
-            ?>
+            <tr>
+        <form METHOD='POST' action='../processes/inscript.proc.php' onsubmit="return inscripcion()">
+            <td><input type='text' name='nombre' id='nombre'></td>
+            <td><input type='text' name='fecha' id='fecha'></td>
+            <td><input type='text' name='hora' id='hora'></td>
+            <td><input type='submit' value='Completar reserva' class="btn btn-dark"></td>
+            </tr>
             </table>
+        </form>
+    </div>
                     <div class="div_terr">
                         </div>
                     <!--<button class='btn_terrazas' id='btn_terraza1' onclick='return btn_terraza1(); $id=1'><img class='img_terraza'>Terraza Norte</button>-->

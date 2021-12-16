@@ -3,7 +3,7 @@ include '../services/connection.php';
 if (isset($_POST['email']) && isset($_POST['password'])) {
     $email_usuario=$_POST['email'];
     $pass_usuario=$_POST['password'];
-    $stmt = $pdo->prepare("SELECT * FROM tbl_camareros WHERE usu_cam=? and contra_cam=MD5(?)");
+    $stmt = $pdo->prepare("SELECT * FROM tbl_usuarios WHERE mail_usu=? and contra_usu=MD5(?)");
     $stmt->bindParam(1, $_REQUEST['email']);
     $stmt->bindParam(2, $_REQUEST['password']);
     $stmt->execute();

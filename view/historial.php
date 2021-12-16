@@ -8,23 +8,23 @@ if(isset($_GET['loc'])){
     $loc=$_GET['loc'];
     $fecha=$_GET['fecha'];
     $entrada=$_GET['entrada'];
-    $salida=$_GET['salida'];
+    $nom=$_GET['nom'];
 }else{
     $loc="";
     $fecha="";
     $entrada="";
-    $salida="";
+    $nom="";
 }
 $log=$pdo->prepare("SELECT tbl_fecha.fecha_lugar_reserva as lugar
 ,tbl_mesa.numero_mesa as numero
 ,tbl_fecha.fecha_reserva as dia
 ,tbl_fecha.hora_reserva as entrada
-,tbl_fecha.hora_salida as salida
+,tbl_fecha.fecha_nombre as nombre
 ,tbl_fecha.id_fecha as id
 from tbl_fecha
 inner join tbl_mesa
 on tbl_fecha.id_mesa=tbl_mesa.id_mesa
-where tbl_fecha.fecha_lugar_reserva like '%$loc%' and tbl_fecha.fecha_reserva like '%$fecha%' and tbl_fecha.hora_reserva like '%$entrada%' and tbl_fecha.hora_salida like '%$salida%' or tbl_fecha.hora_salida is NULL ");
+where tbl_fecha.fecha_lugar_reserva like '%$loc%' and tbl_fecha.fecha_reserva like '%$fecha%' and tbl_fecha.hora_reserva like '%$entrada%' and tbl_fecha.fecha_nombre like '%$nom%'");
 $log->execute();
 $login=$log->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -67,10 +67,10 @@ $login=$log->fetchAll(PDO::FETCH_ASSOC);
             <input type='text' name='localizacion'></th>
                     <th><p>Fecha</p>
             <input type='text' name='fecha' ></th>
-                    <th><p>Hora de entrada</p>
+                    <th><p>Hora de reserva</p>
             <input type='text' name='entrada' ></th>
-                    <th><p>Hora de salida</p>
-            <input type='text' name='salida'></th>
+                    <th><p>Nombre de reserva</p>
+            <input type='text' name='nom'></th>
             <th><div class="filtrar"><input class="filtrar" type='submit' value='Filtrar' class="btn-filtro"></div></th>
                     </form>
                 </tr>
@@ -85,8 +85,8 @@ $login=$log->fetchAll(PDO::FETCH_ASSOC);
                     <th>Localización</th>
                     <th>Mesa</th>
                     <th>Fecha</th>
-                    <th>Hora de entrada</th>
-                    <th>Hora de salida</th>
+                    <th>Hora de Reserva</th>
+                    <th>Nom reserva</th>
                 </tr>
                 <?php
                 foreach ($login as $registro){
@@ -96,17 +96,7 @@ $login=$log->fetchAll(PDO::FETCH_ASSOC);
     <td><?php echo"{$registro['numero']}";?></td>
     <td><?php echo"{$registro['dia']}";?></td>
     <td><?php echo"{$registro['entrada']}";?></td>
-    <?php
-    if(!($registro['salida']==NULL)){
-    ?>
-    <td><?php echo"{$registro['salida']}";?></td>
-    <?php
-    }else{ 
-        ?>
-    <td>------</td>
-    <?php
-    }
-    ?>
+    <td><?php echo"{$registro['nombre']}";?></td>
     <td><form method="POST" action="../processes/eliminar_log.php">
         <input type="hidden" value="<?php echo $registro['id']?>" name="id">
         <input type="submit" <?php echo "style='background: #F54646;'";?> value="ELIMINAR" name="eliminar"></form>

@@ -16,33 +16,27 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `tbl_lugar`
+-- Table structure for table `tbl_origen`
 --
 
-DROP TABLE IF EXISTS `tbl_lugar`;
+DROP TABLE IF EXISTS `tbl_origen`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tbl_lugar` (
-  `id_lugar` int NOT NULL AUTO_INCREMENT,
-  `nom_lugar` varchar(45) DEFAULT NULL,
-  `incidencia_lugar` varchar(45) DEFAULT NULL,
-  `num_lugar` int DEFAULT NULL,
-  `id_origen` int DEFAULT NULL,
-  `img_lugar` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`id_lugar`),
-  KEY `fk_origen_lugar_idx` (`id_origen`),
-  CONSTRAINT `fk_origen_lugar` FOREIGN KEY (`id_origen`) REFERENCES `tbl_origen` (`id_origen`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+CREATE TABLE `tbl_origen` (
+  `id_origen` int NOT NULL AUTO_INCREMENT,
+  `nom_origen` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id_origen`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tbl_lugar`
+-- Dumping data for table `tbl_origen`
 --
 
-LOCK TABLES `tbl_lugar` WRITE;
-/*!40000 ALTER TABLE `tbl_lugar` DISABLE KEYS */;
-INSERT INTO `tbl_lugar` VALUES (1,'Terraza Norte',NULL,1,1,NULL),(2,'Sala privada 1',NULL,1,3,NULL),(3,'Comedor Principal',NULL,1,2,NULL),(4,'Terraza Sur',NULL,2,1,NULL),(5,'Terraza Oeste',NULL,3,1,NULL),(6,'Sala privada 2',NULL,2,3,NULL),(7,'Comedor Gourmet',NULL,2,2,NULL),(8,'Comedor Deluxe',NULL,3,2,NULL),(9,'Sala privada 3',NULL,3,3,NULL),(10,'Sala privada 4',NULL,4,3,NULL);
-/*!40000 ALTER TABLE `tbl_lugar` ENABLE KEYS */;
+LOCK TABLES `tbl_origen` WRITE;
+/*!40000 ALTER TABLE `tbl_origen` DISABLE KEYS */;
+INSERT INTO `tbl_origen` VALUES (1,'Terrazas'),(2,'Comedores'),(3,'Salas Privadas');
+/*!40000 ALTER TABLE `tbl_origen` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -54,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-12-16 18:00:40
+-- Dump completed on 2021-12-16 18:00:41
