@@ -1,11 +1,13 @@
 <?php
 include '../services/connection.php';
+date_default_timezone_set('UTC');
 session_start();
 if (!isset($_SESSION['email'])) {
     echo"<script>window.location.replace('login.php')</script>";
 }
 $idlugar=$_POST['idlugar'];
 $idmesa=$_POST['idmesa'];
+$fecha=date("Y-m-d");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -47,15 +49,26 @@ $idmesa=$_POST['idmesa'];
             <div class=alert id='mensaje'></div>
             <table class="table">
             <tr>
-            <td><p>Nombre</p></td>
+            <td><p>Nombre de la reserva</p></td>
+            <td><p>Telefono</p></td>
             <td><p>Fecha</p></td>
             <td><p>Hora</p></td>
             </tr>
             <tr>
         <form METHOD='POST' action='../processes/inscript.proc.php' onsubmit="return inscripcion()">
             <td><input type='text' name='nombre' id='nombre'></td>
-            <td><input type='text' name='fecha' id='fecha'></td>
-            <td><input type='text' name='hora' id='hora'></td>
+            <td><input type='number' name='telefono' id='telefono'></td>
+            <td><input type="date" id="start" name="fecha" value=<?php echo $fecha;?> min=<?php echo $fecha;?>></td>
+            <td><select name="hora">
+                    <option value="13:00">13:00</option>
+                    <option value="14:00">14:00</option>
+                    <option value="15:00">15:00</option>
+                    <option value="16:00">16:00</option>
+                    <option value="20:00">20:00</option>
+                    <option value="21:00">21:00</option>
+                    <option value="22:00">22:00</option>
+                    <option value="23:00">23:00</option>
+                </select></td>
             <td><input type='submit' value='Completar reserva' class="btn btn-dark"></td>
             </tr>
             </table>

@@ -1,5 +1,4 @@
 <?php
-require_once '../services/config.php';
 require_once '../services/connection.php';
 $estado=$_POST['estado'];
 $lugar=$_POST['lugar'];

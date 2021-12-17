@@ -75,56 +75,18 @@ if(isset($_REQUEST['id'])){
                         <?php
                         }
                         ?>
-                        </div>
-                    <!--<button class='btn_terrazas' id='btn_terraza1' onclick='return btn_terraza1(); $id=1'><img class='img_terraza'>Terraza Norte</button>-->
-                </div>
-
-                <div id='modal_terrazas' class='modal'>
-                    <div class='modal-content'>
-                    <span class='close_terrazas'>&times;</span>
-                    <div id='content_terrazas'>
-                        <?php
-                            $result = mysqli_query($conn,"SELECT tbl_mesa.estado_mesa as estado,tbl_mesa.id_mesa as id,tbl_mesa.lugar_mesa as lugar,tbl_mesa.numero_mesa as numero,tbl_mesa.comensales_mesa as comensales  
-                            from tbl_mesa 
-                            inner join tbl_lugar
-                            on tbl_mesa.id_lugar=tbl_lugar.id_lugar
-                            where tbl_lugar.id_lugar=$id");
-                        ?>
-                        <?php
-                    foreach ($result as $registro){
-                        ?>
-                        <tr>
-                        <td><?php echo"Mesa numero {$registro['numero']}";?></td><br/>
-                        <td><?php echo"{$registro['comensales']} comensales";?></td><br/>
-                        <td><?php echo"{$registro['estado']}";?></td> 
-                        <form method="POST" action="../processes/reserva.php">
-                            <input type="hidden" value="<?php echo $registro['estado']?>" name="estado">
-                            <input type="hidden" value="<?php echo $registro['id']?>" name="id">
-                            <input type="hidden" value="<?php echo $registro['lugar']?>" name="lugar">
-                            <?php
-                            if($registro['estado']=='Disponible'){
-                            ?>
-                            <input type="submit" <?php echo "style='background: #8FF772;'";?> value="Reservar" name="Reservar">
-                            <?php
-                            }elseif($registro['estado']=='Ocupado'){ ?>
-                            <input type="submit" <?php echo "style='background: #F54646;'";?> value="Liberar" name="Ocupado">
-                            <?php
-                            }
-                            ?>
-                        </form><br/>
-                        </tr>
-                        <br/>
-                        <?php 
-                    }
-                        ?>
                     </div>
-                </div>
-                </div>
+                    <!--<button class='btn_terrazas' id='btn_terraza1' onclick='return btn_terraza1(); $id=1'><img class='img_terraza'>Terraza Norte</button>-->
         </div>
+        </div>
+    </div>
+    <div class="flex" id="flex">
+    <div class="contenido" id="contenido">
+    <b><a style="text-decoration:none" class="btn-logout" href="reservas.actuales.php">Reservas actuales</a></b>
+    </div>
     </div>
     <footer>
         <a href="historial.php"><img class="logo_footer2" id="myBtn2" ></a>
-        </div>
     </footer>
 </body>
 

@@ -565,6 +565,14 @@ footer {
     padding: 30px 40px 40px 30px;
     background-repeat: no-repeat;
 }
+.logo_footer3 {
+    width: 70px;
+    height: 70px;
+    background-image: url('../img/reservas.svg');
+    cursor: pointer;
+    padding: 30px 40px 40px 30px;
+    background-repeat: no-repeat;
+}
 */
 
 

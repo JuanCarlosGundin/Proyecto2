@@ -97,10 +97,6 @@ $login=$log->fetchAll(PDO::FETCH_ASSOC);
     <td><?php echo"{$registro['dia']}";?></td>
     <td><?php echo"{$registro['entrada']}";?></td>
     <td><?php echo"{$registro['nombre']}";?></td>
-    <td><form method="POST" action="../processes/eliminar_log.php">
-        <input type="hidden" value="<?php echo $registro['id']?>" name="id">
-        <input type="submit" <?php echo "style='background: #F54646;'";?> value="ELIMINAR" name="eliminar"></form>
-    </td>
     </tr>
     <?php
     }
