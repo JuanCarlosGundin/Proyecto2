@@ -69,6 +69,7 @@ $nom2=$login[0]['nom_lugar'];
                 <td><?php echo"{$registro['estado_mesa']}";?></td>
                 <td><form method="POST" action="reserva.php">
                 <input type="hidden" value="<?php echo $id ;?>" name="idlugar">
+                <input type="hidden" value="<?php echo"{$registro['nom_lugar']}";?>" name="nomlugar">
                 <input type="hidden" value="<?php echo"{$registro['id_mesa']}";?>" name="idmesa">
                 <input type="submit" <?php echo "style='background: white;'";?> value="Reservar" name="reservar"></form>
                 </td>

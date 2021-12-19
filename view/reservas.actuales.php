@@ -13,7 +13,8 @@ $log=$pdo->prepare("SELECT tbl_reservas.lugar_reserva as lugar
 ,tbl_reservas.id_reserva as id
 from tbl_reservas
 inner join tbl_mesa
-on tbl_reservas.id_mesa=tbl_mesa.id_mesa");
+on tbl_reservas.id_mesa=tbl_mesa.id_mesa
+Order by tbl_reservas.fecha_reserva ASC");
 $log->execute();
 $login=$log->fetchAll(PDO::FETCH_ASSOC);
 ?>

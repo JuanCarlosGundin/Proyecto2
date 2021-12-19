@@ -5,8 +5,9 @@ session_start();
 if (!isset($_SESSION['email'])) {
     echo"<script>window.location.replace('login.php')</script>";
 }
-$idlugar=$_POST['idlugar'];
-$idmesa=$_POST['idmesa'];
+$idlugar=$_REQUEST['idlugar'];
+$idmesa=$_REQUEST['idmesa'];
+$nomlugar=$_REQUEST['nomlugar'];
 $fecha=date("Y-m-d");
 ?>
 <!DOCTYPE html>
@@ -55,7 +56,7 @@ $fecha=date("Y-m-d");
             <td><p>Hora</p></td>
             </tr>
             <tr>
-        <form METHOD='POST' action='../processes/inscript.proc.php' onsubmit="return inscripcion()">
+        <form METHOD='POST' action='../processes/reserva.proc.php' onsubmit="return inscripcion()">
             <td><input type='text' name='nombre' id='nombre'></td>
             <td><input type='number' name='telefono' id='telefono'></td>
             <td><input type="date" id="start" name="fecha" value=<?php echo $fecha;?> min=<?php echo $fecha;?>></td>
@@ -69,6 +70,9 @@ $fecha=date("Y-m-d");
                     <option value="22:00">22:00</option>
                     <option value="23:00">23:00</option>
                 </select></td>
+                <input type='hidden' name='idmesa' value=<?php echo $idmesa ?>>
+                <input type='hidden' name='idlugar' value=<?php echo $idlugar ?>>
+                <input type='hidden' name='nomlugar' value=<?php echo $nomlugar ?>>
             <td><input type='submit' value='Completar reserva' class="btn btn-dark"></td>
             </tr>
             </table>
