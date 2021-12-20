@@ -73,12 +73,19 @@ meter en el phpMyadmin copiar el texto, pegar y ejectutar el contenido del fiche
 El orden es el siguiente:
 
 2122_gundinjuancarlos.sql
+
 2122_gundinjuancarlos_tbl_origen.sql
+
 2122_gundinjuancarlos_tbl_perfiles.sql
+
 2122_gundinjuancarlos_tbl_usuarios.sql
+
 2122_gundinjuancarlos_tbl_lugar.sql
+
 2122_gundinjuancarlos_tbl_mesa.sql
+
 2122_gundinjuancarlos_tbl_fecha.sql
+
 2122_gundinjuancarlos_tbl_reservas.sql
 
 Una vez tengamos esto y configuremos el fichero config.php ya podremos empezar.
