@@ -27,12 +27,12 @@ CREATE TABLE `tbl_fecha` (
   `fecha_reserva` varchar(45) DEFAULT NULL,
   `hora_reserva` varchar(45) DEFAULT NULL,
   `id_mesa` int DEFAULT NULL,
-  `hora_salida` varchar(45) DEFAULT NULL,
   `fecha_lugar_reserva` varchar(45) DEFAULT NULL,
+  `fecha_nombre` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_fecha`),
   KEY `fk_fecha_mesa_idx` (`id_mesa`),
   CONSTRAINT `fk_fecha_mesa` FOREIGN KEY (`id_mesa`) REFERENCES `tbl_mesa` (`id_mesa`)
-) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +41,7 @@ CREATE TABLE `tbl_fecha` (
 
 LOCK TABLES `tbl_fecha` WRITE;
 /*!40000 ALTER TABLE `tbl_fecha` DISABLE KEYS */;
-INSERT INTO `tbl_fecha` VALUES (49,'2021-11-09','15:44:40',14,NULL,'Terraza Oeste'),(50,'2021-11-09','15:45:33',12,NULL,'Terraza Oeste'),(51,'2021-11-09','15:49:38',20,'16:56:39','Comedor Deluxe'),(52,'2021-11-09','16:56:43',20,'16:56:52','Comedor Deluxe');
+INSERT INTO `tbl_fecha` VALUES (55,'2021-11-09','19:57:25',1,'Sala privada 1','Paco'),(56,'2021-11-09','20:42:51',1,'Sala privada 1','Manuel');
 /*!40000 ALTER TABLE `tbl_fecha` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -54,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-11-09 17:17:37
+-- Dump completed on 2021-12-16 18:00:40

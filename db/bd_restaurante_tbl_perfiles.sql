@@ -16,30 +16,27 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `tbl_camareros`
+-- Table structure for table `tbl_perfiles`
 --
 
-DROP TABLE IF EXISTS `tbl_camareros`;
+DROP TABLE IF EXISTS `tbl_perfiles`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tbl_camareros` (
-  `id_cam` int NOT NULL AUTO_INCREMENT,
-  `nom_cam` varchar(45) DEFAULT NULL,
-  `apellido_cam` varchar(45) DEFAULT NULL,
-  `contra_cam` varchar(45) DEFAULT NULL,
-  `usu_cam` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id_cam`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+CREATE TABLE `tbl_perfiles` (
+  `id_perfil` int NOT NULL AUTO_INCREMENT,
+  `tipo_perfil` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id_perfil`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tbl_camareros`
+-- Dumping data for table `tbl_perfiles`
 --
 
-LOCK TABLES `tbl_camareros` WRITE;
-/*!40000 ALTER TABLE `tbl_camareros` DISABLE KEYS */;
-INSERT INTO `tbl_camareros` VALUES (1,'Paco','Ramirez','1fa3356b1eb65f144a367ff8560cb406','Paco@gmail.com'),(2,'Manolo','Gonzalez','1fa3356b1eb65f144a367ff8560cb406','Manolo@gmail.com');
-/*!40000 ALTER TABLE `tbl_camareros` ENABLE KEYS */;
+LOCK TABLES `tbl_perfiles` WRITE;
+/*!40000 ALTER TABLE `tbl_perfiles` DISABLE KEYS */;
+INSERT INTO `tbl_perfiles` VALUES (1,'admin'),(2,'camarero');
+/*!40000 ALTER TABLE `tbl_perfiles` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -51,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-11-09 17:17:37
+-- Dump completed on 2021-12-16 18:00:41
