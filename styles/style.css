@@ -418,6 +418,10 @@ nav {
     background-repeat: no-repeat;
     /*margin-left: 20px;*/
 }
+.imgfix{
+    width: 100px;
+    height: 100px;
+}
 .img_inicio{
     width: 200px;
     height: 200px;

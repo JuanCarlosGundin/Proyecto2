@@ -52,6 +52,7 @@ $login=$log->fetchAll(PDO::FETCH_ASSOC);
                 <tr>
                     <th>Zona</th>
                     <th>Lugar</th>
+                    <th>imagen</th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -62,6 +63,7 @@ $login=$log->fetchAll(PDO::FETCH_ASSOC);
             <tr>
                 <td><?php echo"{$registro['nom_lugar']}";?></td>
                 <td><?php echo"{$registro['nom_origen']}";?></td>
+                <td><img class="imgfix" src=<?php echo"../img/{$registro['img_lugar']}";?>></td>
                 <td><form method="POST" action="modificar.zona.php">
                 <input type="hidden" value="<?php echo"{$registro['id_lugar']}";?>" name="id">
                 <input type="hidden" value="<?php echo"{$registro['nom_lugar']}";?>" name="lugar">
