@@ -6,7 +6,6 @@ if (!isset($_SESSION['admin'])) {
 }
 $id=$_REQUEST['id'];
 $lugar=$_REQUEST['lugar'];
-$origen=$_REQUEST['origen'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,7 +24,7 @@ $origen=$_REQUEST['origen'];
     <div class="row2" id="section-1">
         <div class="usuario column-1">
         <ul class="padding-lat">
-        <b><a class="btn-logout">Actualizar</a></b>
+        <b><a class="btn-logout">Crear</a></b>
         </ul>
         </div>
         <div class="column-2 titulo2">
@@ -39,7 +38,7 @@ $origen=$_REQUEST['origen'];
     </div>
     <div class="flex">
         <div class="menu">
-    <h1 <?php echo "style='color: black;'";?> >Editar zona</div> 
+    <h1 <?php echo "style='color: black;'";?> >Crear mesa</div> 
     </div>
     <div class="flex" id="flex">
         <div class="contenido" id="contenido">
@@ -48,21 +47,16 @@ $origen=$_REQUEST['origen'];
             <div class=alert id='mensaje'></div>
             <table class="table">
             <tr>
-            <td><p>Zona</p></td>
-            <td><p>Lugar</p></td>
-            <td><p>Imagen</p></td>
+            <td><p>numero</p></td>
+            <td><p>sillas</p></td>
             </tr>
             <tr>
-        <form METHOD='POST' action='../processes/actualizar.zona.php' enctype="multipart/form-data" onsubmit="return validarActualizarZona()">
-            <td><input type='text' value="<?php echo $lugar; ?>" name='lugar' id='nombre'></td>
-                <td><select name="origen">
-                    <option value="1" selected >Terrazas</option>
-                    <option value="2">Comedores</option>
-                    <option value="3">Salas privadas</option>
-                </select></td>
-            <td><input type="file" name="foto" id="foto_evento"></td>
-            <input type='hidden' name='id' value=<?php echo $id ?>>
-            <td><input type='submit' value='Actualizar' class="btn btn-dark"></td>
+        <form METHOD='POST' action='../processes/crear.submesa.proc.php' onsubmit="return validarActualizarMesa()">
+            <td><input type='number' name='numero' id='nombre'></td>
+            <td><input type='number'  name='sillas' id='telefono'></td>
+            <input type='hidden' value="<?php echo $lugar; ?>" name='lugar' >
+            <input type='hidden' value="<?php echo $id; ?>" name='id' >
+            <td><input type='submit' value='Crear' class="btn btn-dark"></td>
             </tr>
             </table>
         </form>

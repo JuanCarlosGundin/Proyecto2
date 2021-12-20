@@ -414,11 +414,16 @@ nav {
 .img_terraza {
     width: 200px;
     height: 200px;
-    background-size: cover;
-    background-image: url('../img/terraza.png');
     padding: 100px 100px 100px 100px;
     background-repeat: no-repeat;
     /*margin-left: 20px;*/
+}
+.img_inicio{
+    width: 200px;
+    height: 200px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    cursor: pointer;
 }
 
 .img_comedor {

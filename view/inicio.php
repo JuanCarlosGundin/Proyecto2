@@ -70,7 +70,7 @@ if(isset($_REQUEST['id'])){
                         foreach($mesas as $mesa){
                         ?>
                         <div class="div_terr_">
-                        <a id='btn_terraza1' href=<?php echo "./mesas.php?id={$mesa['id_lugar']}&nom={$mesa['nom_lugar']}";?>><img class='img_terraza'></a><br><?php echo"{$mesa['nom_lugar']}";?>
+                        <a id='btn_terraza1' href=<?php echo "./mesas.php?id={$mesa['id_lugar']}&nom={$mesa['nom_lugar']}";?>><img class="img_inicio" src=<?php echo "../img/{$mesa['img_lugar']}";?>></a><br><?php echo"{$mesa['nom_lugar']}";?>
                         </div>
                         <?php
                         }

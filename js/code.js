@@ -92,33 +92,98 @@ function validarR() {
     }
 }
 
-//boton incidencias
-function btn_incidencias() {
-    // Get the modal
-    var modal = document.getElementById("myModal");
 
-    // Get the button that opens the modal
-    var btn = document.getElementById("myBtn");
 
-    // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close")[0];
 
-    // When the user clicks the button, open the modal 
-    btn.onclick = function() {
-        modal.style.display = "block";
+//
+function validarReserva() {
+    nombre = document.getElementById('nombre').value
+    telefono = document.getElementById('telefono').value
+    contenido = document.getElementById('js')
+
+    if (nombre == '' && telefono == '') {
+        contenido.innerHTML = 'Introduce el nombre y el telefono'
+        return false
+    } else if (nombre == '') {
+        contenido.innerHTML = 'Introduce el nombre'
+        return false
+    } else if (telefono == '') {
+        contenido.innerHTML = 'Introduce el telefono'
+        return false
+    } else {
+        return true
     }
-
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function() {
-        modal.style.display = "none";
-    }
-
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-        //fin
 }
 
+function validarActualizarUser() {
+    nombre = document.getElementById('nombre').value
+    telefono = document.getElementById('telefono').value
+    contenido = document.getElementById('js')
+
+    if (nombre == '' && telefono == '') {
+        contenido.innerHTML = 'Introduce el nombre y el correo'
+        return false
+    } else if (nombre == '') {
+        contenido.innerHTML = 'Introduce el nombre'
+        return false
+    } else if (telefono == '') {
+        contenido.innerHTML = 'Introduce el correo'
+        return false
+    } else {
+        return true
+    }
+}
+
+function validarCrearUser() {
+    nombre = document.getElementById('nombre').value
+    telefono = document.getElementById('telefono').value
+    contra = document.getElementById('contra').value
+    contenido = document.getElementById('js')
+
+    if (nombre == '' && telefono == '' && contra == '') {
+        contenido.innerHTML = 'Llena todos los campos '
+        return false
+    } else if (nombre == '') {
+        contenido.innerHTML = 'Introduce el nombre'
+        return false
+    } else if (telefono == '') {
+        contenido.innerHTML = 'Introduce el correo'
+        return false
+    } else if (contra == '') {
+        contenido.innerHTML = 'Introduce la contraseña'
+        return false
+    } else {
+        return true
+    }
+}
+
+function validarActualizarZona() {
+    nombre = document.getElementById('nombre').value
+    contenido = document.getElementById('js')
+
+    if (nombre == '') {
+        contenido.innerHTML = 'Llena todos los campos '
+        return false
+    }  else {
+        return true
+    }
+}
+
+function validarActualizarMesa() {
+    nombre = document.getElementById('nombre').value
+    telefono = document.getElementById('telefono').value
+    contenido = document.getElementById('js')
+
+    if (nombre == '' && telefono == '') {
+        contenido.innerHTML = 'Llena todos los campos '
+        return false
+    } else if (nombre == '') {
+        contenido.innerHTML = 'Introduce el numero'
+        return false
+    } else if (telefono == '') {
+        contenido.innerHTML = 'Introduce las sillas'
+        return false
+    } else {
+        return true
+    }
+}

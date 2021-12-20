@@ -15,13 +15,11 @@ if (move_uploaded_file($_FILES["foto"]["tmp_name"], $target_file)) {
 }
 $zona=$_POST['lugar'];
 $origen=$_POST['origen'];
-$id=$_POST['id'];
-    $modificar = $pdo->prepare("UPDATE tbl_lugar
-    SET nom_lugar = ?,id_origen = ?,img_lugar = ?
-    where id_lugar= ?");
+    $modificar = $pdo->prepare("INSERT INTO `tbl_lugar` 
+    (`nom_lugar`, `id_origen`, `img_lugar`, `lugar_actividad`) 
+    VALUES (?, ?, ?, '1')");
     $modificar->bindParam(1, $zona);
     $modificar->bindParam(2, $origen);
     $modificar->bindParam(3, $foto); 
-    $modificar->bindParam(4, $id); 
     $modificar->execute();
     echo"<script>window.location.replace('../view/mesas.admin.php')</script>";

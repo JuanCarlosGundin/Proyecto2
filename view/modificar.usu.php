@@ -54,9 +54,9 @@ $perfil=$_REQUEST['perfil'];
             <td><p>Permisos</p></td>
             </tr>
             <tr>
-        <form METHOD='POST' action='../processes/actualizar.usuario.proc.php' onsubmit="return inscripcion()">
+        <form METHOD='POST' action='../processes/actualizar.usuario.proc.php' onsubmit="return validarActualizarUser()">
             <td><input type='text' value=<?php echo $nom; ?> name='nombre' id='nombre'></td>
-            <td><input type='text' value=<?php echo $mail; ?> name='mail' id='nombre'></td>
+            <td><input type='text' value=<?php echo $mail; ?> name='mail' id='telefono'></td>
             <?php if($perfil=="1"){ ?>
                 <td><select name="perfil">
                     <option value="1" selected>ADMIN</option>
@@ -87,6 +87,10 @@ $perfil=$_REQUEST['perfil'];
                 </div>
                 </div>
         </div>
+    </div>
+    <div class="flex" id="flex">
+    <div class="contenido" id="js">
+    </div>
     </div>
     <footer>
     <div class="logo_footer">

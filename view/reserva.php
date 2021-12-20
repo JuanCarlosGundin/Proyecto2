@@ -56,7 +56,7 @@ $fecha=date("Y-m-d");
             <td><p>Hora</p></td>
             </tr>
             <tr>
-        <form METHOD='POST' action='../processes/reserva.proc.php' onsubmit="return inscripcion()">
+        <form METHOD='POST' action='../processes/reserva.proc.php' onsubmit="return validarReserva()">
             <td><input type='text' name='nombre' id='nombre'></td>
             <td><input type='number' name='telefono' id='telefono'></td>
             <td><input type="date" id="start" name="fecha" value=<?php echo $fecha;?> min=<?php echo $fecha;?>></td>
@@ -91,6 +91,10 @@ $fecha=date("Y-m-d");
                 </div>
                 </div>
         </div>
+    </div>
+    <div class="flex" id="flex">
+    <div class="contenido" id="js">
+    </div>
     </div>
     <footer>
     <div class="logo_footer">

@@ -5,8 +5,9 @@ if (!isset($_SESSION['admin'])) {
     echo"<script>window.location.replace('login.php')</script>";
 }
 $id=$_REQUEST['id'];
+$numero=$_REQUEST['numero'];
+$sillas=$_REQUEST['sillas'];
 $lugar=$_REQUEST['lugar'];
-$origen=$_REQUEST['origen'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,7 +40,7 @@ $origen=$_REQUEST['origen'];
     </div>
     <div class="flex">
         <div class="menu">
-    <h1 <?php echo "style='color: black;'";?> >Editar zona</div> 
+    <h1 <?php echo "style='color: black;'";?> >Editar mesa</div> 
     </div>
     <div class="flex" id="flex">
         <div class="contenido" id="contenido">
@@ -48,19 +49,14 @@ $origen=$_REQUEST['origen'];
             <div class=alert id='mensaje'></div>
             <table class="table">
             <tr>
-            <td><p>Zona</p></td>
-            <td><p>Lugar</p></td>
-            <td><p>Imagen</p></td>
+            <td><p>numero</p></td>
+            <td><p>sillas</p></td>
             </tr>
             <tr>
-        <form METHOD='POST' action='../processes/actualizar.zona.php' enctype="multipart/form-data" onsubmit="return validarActualizarZona()">
-            <td><input type='text' value="<?php echo $lugar; ?>" name='lugar' id='nombre'></td>
-                <td><select name="origen">
-                    <option value="1" selected >Terrazas</option>
-                    <option value="2">Comedores</option>
-                    <option value="3">Salas privadas</option>
-                </select></td>
-            <td><input type="file" name="foto" id="foto_evento"></td>
+        <form METHOD='POST' action='../processes/editar.submesa.proc.php' onsubmit="return validarActualizarMesa()">
+            <td><input type='number' value="<?php echo $numero; ?>" name='numero' id='nombre'></td>
+            <td><input type='number' value="<?php echo $sillas; ?>" name='sillas' id='telefono'></td>
+            <input type='hidden' value="<?php echo $lugar; ?>" name='lugar' id='nombre'>
             <input type='hidden' name='id' value=<?php echo $id ?>>
             <td><input type='submit' value='Actualizar' class="btn btn-dark"></td>
             </tr>

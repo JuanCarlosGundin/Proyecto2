@@ -4,10 +4,12 @@ session_start();
 if (!isset($_SESSION['admin'])) {
     echo"<script>window.location.replace('login.php')</script>";
 }
+$lugar=$_REQUEST['lugar'];
+$id=$_REQUEST['id'];
 $log=$pdo->prepare("SELECT *
-from tbl_lugar
-inner join tbl_origen
-on tbl_lugar.id_origen=tbl_origen.id_origen");
+from tbl_mesa
+where lugar_mesa like ?");
+$log->bindParam(1, $lugar);
 $log->execute();
 $login=$log->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -36,13 +38,13 @@ $login=$log->fetchAll(PDO::FETCH_ASSOC);
         </div>
         <div class="logout column-1">
             <ul class="padding-lat">
-            <b><a style="text-decoration:none" class="btn-logout" href="zona.admin.php">Volver</a></b>
+            <b><a style="text-decoration:none" class="btn-logout" href="mesas.admin.php">Volver</a></b>
             </ul>
         </div>
     </div>
     <div class="flex">
         <div class="menu">
-    <h1 <?php echo "style='color: black;'";?> >Administrar Zonas
+<h1 <?php echo "style='color: black;'";?> >Administrar Mesas de <?php echo $lugar;?>
         </div> 
     </div>
     <div class="flex" id="flex">
@@ -50,38 +52,36 @@ $login=$log->fetchAll(PDO::FETCH_ASSOC);
         <div class="div_botones" id="div_botones">
         <table class="table">
                 <tr>
-                    <th>Zona</th>
-                    <th>Lugar</th>
-                    <th></th>
+                    <th>Mesa</th>
+                    <th>Sillas</th>
+                    <th>Estado</th>
                     <th></th>
                 </tr>
                 <?php
                 foreach ($login as $registro){
-                    if($registro['lugar_actividad']=="1"){
+                   if($registro['mesa_actividad']=="1"){
                 ?>
             <tr>
-                <td><?php echo"{$registro['nom_lugar']}";?></td>
-                <td><?php echo"{$registro['nom_origen']}";?></td>
-                <td><form method="POST" action="modificar.zona.php">
-                <input type="hidden" value="<?php echo"{$registro['id_lugar']}";?>" name="id">
-                <input type="hidden" value="<?php echo"{$registro['nom_lugar']}";?>" name="lugar">
-                <input type="hidden" value="<?php echo"{$registro['nom_origen']}";?>" name="origen">
+                <td><?php echo"{$registro['numero_mesa']}";?></td>
+                <td><?php echo"{$registro['sillas_mesa']}";?></td>
+                <td><?php echo"{$registro['estado_mesa']}";?></td>
+                <td><form method="POST" action="editar.submesa.php">
+                <input type="hidden" value="<?php echo"{$registro['numero_mesa']}";?>" name="numero">
+                <input type="hidden" value="<?php echo"{$registro['sillas_mesa']}";?>" name="sillas">
+                <input type="hidden" value="<?php echo"{$registro['lugar_mesa']}";?>" name="lugar">
+                <input type="hidden" value="<?php echo"{$registro['id_mesa']}";?>" name="id">
                 <input type="submit" <?php echo "style='background: white;'";?> value="Editar" name="Gestionar"></form>
                 </td>
-                <td><form method="POST" action="submesas.admin.php">
-                <input type="hidden" value="<?php echo"{$registro['id_lugar']}";?>" name="id">
-                <input type="hidden" value="<?php echo"{$registro['nom_lugar']}";?>" name="lugar">
-                <input type="hidden" value="<?php echo"{$registro['nom_origen']}";?>" name="origen">
-                <input type="submit" <?php echo "style='background: green;'";?> value="Ver mesas" name="mesas"></form>
-                </td>
-                <td><form method="POST" action="../processes/eliminar.mesa.proc.php">
-                <input type="hidden" value="<?php echo"{$registro['id_lugar']}";?>" name="id">
+                <td><form method="POST" action="../processes/eliminar.submesas.proc.php">
+                <input type="hidden" value="<?php echo "{$registro['id_mesa']}";?>" name="id">
+                <input type="hidden" value="<?php echo $lugar;?>" name="lugar">
+                <input type="hidden" value="<?php echo $id;?>" name="idlugar">
                 <input type="submit" <?php echo "style='background: red;'";?> value="Eliminar" name="Eliminar"></form>
                 </td>
             </tr>
             <?php
             }
-             }
+            }
             ?>
             </table>
                     <div class="div_terr">
@@ -100,7 +100,11 @@ $login=$log->fetchAll(PDO::FETCH_ASSOC);
     </div>
     <div class="flex" id="flex">
     <div class="contenido" id="contenido">
-    <b><a style="text-decoration:none" class="btn-logout" href="add.zona.php">Añadir Zona</a></b>
+    <form method="POST" action="crear.submesa.php">
+    <input type="hidden" value="<?php echo $lugar;?>" name="lugar">
+    <input type="hidden" value="<?php echo $id;?>" name="id">
+    <input type="submit" style="text-decoration:none" class="btn-logout" value="Crear mesa" name="crear"></form>
+    </form>
     </div>
     </div>
     <footer>

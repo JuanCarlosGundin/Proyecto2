@@ -51,9 +51,9 @@ if (!isset($_SESSION['admin'])) {
             <td><p>Permisos</p></td>
             </tr>
             <tr>
-        <form METHOD='POST' action='../processes/crear.user.proc.php' onsubmit="return inscripcion()">
+        <form METHOD='POST' action='../processes/crear.user.proc.php' onsubmit="return validarCrearUser()">
             <td><input type='text'  name='nombre' id='nombre'></td>
-            <td><input type='text'  name='mail' id='mail'></td>
+            <td><input type='text'  name='mail' id='telefono'></td>
             <td><input type='text'  name='contra' id='contra'></td>
                 <td><select name="perfil">
                     <option value="1">ADMIN</option>
@@ -77,6 +77,10 @@ if (!isset($_SESSION['admin'])) {
                 </div>
                 </div>
         </div>
+    </div>
+    <div class="flex" id="flex">
+    <div class="contenido" id="js">
+    </div>
     </div>
     <footer>
     <div class="logo_footer">
