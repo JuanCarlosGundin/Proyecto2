@@ -35,7 +35,7 @@ $login=$log->fetchAll(PDO::FETCH_ASSOC);
         </div>
         <div class="logout column-1">
             <ul class="padding-lat">
-            <b><a style="text-decoration:none" class="btn-logout" href="inicio.php">Volver</a></b>
+            <b><a style="text-decoration:none" class="btn-logout" href="zona.admin.php">Volver</a></b>
             </ul>
         </div>
     </div>
@@ -73,10 +73,15 @@ $login=$log->fetchAll(PDO::FETCH_ASSOC);
                 <input type="hidden" value="<?php echo"{$registro['id_perfil']}";?>" name="perfil">
                 <input type="submit" <?php echo "style='background: white;'";?> value="Modificar" name="Modificar"></form>
                 </td>
+                <?php if($registro['mail_usu']==$mail){ ?>
+                <td> 
+                </td> 
+                <?php } else{ ?>
                 <td><form method="POST" action="../processes/eliminar.usuario.proc.php">
                 <input type="hidden" value="<?php echo"{$registro['id_usu']}";?>" name="id">
                 <input type="submit" <?php echo "style='background: red;'";?> value="Eliminar" name="Eliminar"></form>
                 </td>
+                <?php } ?>
             </tr>
             <?php
             }

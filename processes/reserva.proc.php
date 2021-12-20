@@ -13,7 +13,7 @@ $sentencia->execute(array(":u" => $fecha,":i" => $hora));
     if($sentencia->fetchColumn() < 1){
             //metemos en la tabla de reservas
             $pdo->beginTransaction(); 
-            $reserva = $pdo->prepare("INSERT INTO `bd_restaurante`.`tbl_reservas` (`nom_reserva`, `fecha_reserva`, `hora_reserva`, `id_mesa`, `lugar_reserva`, `telefono_reserva`) VALUES (?, ?, ?, ?, ?, ?)");
+            $reserva = $pdo->prepare("INSERT INTO `tbl_reservas` (`nom_reserva`, `fecha_reserva`, `hora_reserva`, `id_mesa`, `lugar_reserva`, `telefono_reserva`) VALUES (?, ?, ?, ?, ?, ?)");
              // Bind
              $reserva->bindParam(1, $nombre);
              $reserva->bindParam(2, $fecha);
@@ -22,7 +22,7 @@ $sentencia->execute(array(":u" => $fecha,":i" => $hora));
              $reserva->bindParam(5, $lugar);
              $reserva->bindParam(6, $telefono);
             //metemos en la tabla de logs
-            $log = $pdo->prepare("INSERT INTO `bd_restaurante`.`tbl_fecha` (`fecha_reserva`, `hora_reserva`, `id_mesa`, `fecha_lugar_reserva`, `fecha_nombre`) VALUES (?, ?, ?, ?, ?)");
+            $log = $pdo->prepare("INSERT INTO `tbl_fecha` (`fecha_reserva`, `hora_reserva`, `id_mesa`, `fecha_lugar_reserva`, `fecha_nombre`) VALUES (?, ?, ?, ?, ?)");
             // Bind
             $log->bindParam(1, $fecha);
             $log->bindParam(2, $hora);
