@@ -32,7 +32,7 @@ $nom2=$login[0]['nom_lugar'];
     <div class="row2" id="section-1">
         <div class="usuario column-1">
         <ul class="padding-lat">
-        <b><a class="btn-logout">Reservar</a></b>
+        <b><a class="btn-logout">Mesas</a></b>
         </ul>
         </div>
         <div class="column-2 titulo2">

@@ -12,7 +12,12 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
         if (!$comprobar=="") {
             session_start();
             $_SESSION['email']=$email_usuario;
+            if($comprobar[0]['id_perfil']=='1'){
+                $_SESSION['admin']="1";
+                echo"<script>window.location.replace('../view/zona.admin.php')</script>";
+            }else{
             echo"<script>window.location.replace('../view/inicio.php')</script>";
+            }
         }else {
             session_start();
             echo"<script>window.location.replace('../view/login.php?error=errorinicio')</script>";
