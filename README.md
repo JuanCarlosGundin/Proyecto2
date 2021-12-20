@@ -12,7 +12,6 @@ Mira **Deployment** (Despliegue) para conocer como desplegar el proyecto.
 
 ### Pre-requisitos 📋
 
-_Que cosas necesitas para instalar el software y como instalarlas_
 
 ```
 Necesitas : SQL XAMP y Visual Studio Code
@@ -20,7 +19,6 @@ Necesitas : SQL XAMP y Visual Studio Code
 
 ### Instalación 🔧
 
-_Una serie de ejemplos paso a paso que te dice lo que debes ejecutar para tener un entorno de desarrollo ejecutandose_
 
 _Instalaciones_
 
@@ -39,11 +37,14 @@ _Añadir la base de datos_
 Tendras que insertar una vez descargado el proyecto en el directorio bd encontraras todos los inserts que tendrás que 
 meter en el sql copiar el texto, pegar y ejectutar el contenido del fichero
 El orden es el siguiente:
-bd_restaurante.sql
-bd_restaurante_tbl_camareros.sql
-bd_restaurante_tbl_lugar.sql
-bd_restaurante_tbl_mesa.sql
-bd_restaurante_tbl_fecha.sql
+2122_gundinjuancarlos.sql
+2122_gundinjuancarlos_tbl_origen.sql
+2122_gundinjuancarlos_tbl_perfiles.sql
+2122_gundinjuancarlos_tbl_usuarios.sql
+2122_gundinjuancarlos_tbl_lugar.sql
+2122_gundinjuancarlos_tbl_mesa.sql
+2122_gundinjuancarlos_tbl_fecha.sql
+2122_gundinjuancarlos_tbl_reservas.sql
 ```
 _Creación de un fichero config_
 ```
@@ -71,17 +72,19 @@ Tendras que insertar una vez descargado el proyecto en el directorio bd encontra
 meter en el phpMyadmin copiar el texto, pegar y ejectutar el contenido del fichero
 El orden es el siguiente:
 
-bd_restaurante_tbl_camareros.sql
-bd_restaurante_tbl_lugar.sql
-bd_restaurante_tbl_mesa.sql
-bd_restaurante_tbl_fecha.sql
+2122_gundinjuancarlos.sql
+2122_gundinjuancarlos_tbl_origen.sql
+2122_gundinjuancarlos_tbl_perfiles.sql
+2122_gundinjuancarlos_tbl_usuarios.sql
+2122_gundinjuancarlos_tbl_lugar.sql
+2122_gundinjuancarlos_tbl_mesa.sql
+2122_gundinjuancarlos_tbl_fecha.sql
+2122_gundinjuancarlos_tbl_reservas.sql
 
 Una vez tengamos esto y configuremos el fichero config.php ya podremos empezar.
 
 
 ## Construido con 🛠️
-
-_Menciona las herramientas que utilizaste para crear tu proyecto_
 
 * [MysqlWorkbench](http://www.dropwizard.io/1.0.2/docs/) - El editor de base de datos
 * [Visual Studio Code](https://maven.apache.org/) - Editor de codigo
