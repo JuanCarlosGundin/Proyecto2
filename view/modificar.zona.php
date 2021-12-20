@@ -50,18 +50,18 @@ $origen=$_REQUEST['origen'];
             <tr>
             <td><p>Zona</p></td>
             <td><p>Lugar</p></td>
-            <td><p>Permisos</p></td>
+            <td><p>Imagen</p></td>
             </tr>
             <tr>
-        <form METHOD='POST' action='../processes/actualizar.usuario.proc.php' onsubmit="return inscripcion()">
-            <td><input type='text' value=<?php echo $nom; ?> name='nombre' id='nombre'></td>
-            <td><input type='text' value=<?php echo $mail; ?> name='mail' id='nombre'></td>
+        <form METHOD='POST' action='../processes/actualizar.zona.php' enctype="multipart/formdata" onsubmit="return inscripcion()">
+            <td><input type='text' value="<?php echo $lugar; ?>" name='lugar' id='nombre'></td>
                 <td><select name="origen">
                     <option value="1" selected >Terrazas</option>
                     <option value="2">Comedores</option>
                     <option value="3">Salas privadas</option>
                 </select></td>
-                <input type='hidden' name='id' value=<?php echo $id ?>>
+            <td><input type="file" name="foto" id="foto_evento"></td>
+            <input type='hidden' name='id' value=<?php echo $id ?>>
             <td><input type='submit' value='Actualizar' class="btn btn-dark"></td>
             </tr>
             </table>

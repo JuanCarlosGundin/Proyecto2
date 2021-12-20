@@ -9,8 +9,8 @@ $id=$_POST['id'];
     SET nom_usu = ?,mail_usu = ?,id_perfil = ?
     where id_usu= ?");
     $modificar->bindParam(1, $nom);
-    $modificar->bindParam(3, $mail);
-    $modificar->bindParam(4, $perfil);
-    $modificar->bindParam(5, $id); 
+    $modificar->bindParam(2, $mail);
+    $modificar->bindParam(3, $perfil);
+    $modificar->bindParam(4, $id); 
     $modificar->execute();
     echo"<script>window.location.replace('../view/usuarios.admin.php')</script>";
