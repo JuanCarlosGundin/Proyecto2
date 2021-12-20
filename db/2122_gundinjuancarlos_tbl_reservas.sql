@@ -28,10 +28,12 @@ CREATE TABLE `tbl_reservas` (
   `fecha_reserva` varchar(45) DEFAULT NULL,
   `hora_reserva` varchar(45) DEFAULT NULL,
   `id_mesa` int DEFAULT NULL,
+  `lugar_reserva` varchar(45) DEFAULT NULL,
+  `telefono_reserva` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_reserva`),
   KEY `fk_reserva_mesa_idx` (`id_mesa`),
   CONSTRAINT `fk_reserva_mesa` FOREIGN KEY (`id_mesa`) REFERENCES `tbl_mesa` (`id_mesa`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,6 +42,7 @@ CREATE TABLE `tbl_reservas` (
 
 LOCK TABLES `tbl_reservas` WRITE;
 /*!40000 ALTER TABLE `tbl_reservas` DISABLE KEYS */;
+INSERT INTO `tbl_reservas` VALUES (1,'Paco','2021-11-09','19:57:25',1,'Sala privada 1','607043349'),(5,'TEST','2021-12-29','23:00',20,'Comedor','607469934');
 /*!40000 ALTER TABLE `tbl_reservas` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-12-16 18:00:40
+-- Dump completed on 2021-12-20 18:17:39

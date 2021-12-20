@@ -1,0 +1,2 @@
+create database 2122_gundinjuancarlos;
+use 2122_gundinjuancarlos;

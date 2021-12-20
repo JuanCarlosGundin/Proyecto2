@@ -32,7 +32,7 @@ CREATE TABLE `tbl_fecha` (
   PRIMARY KEY (`id_fecha`),
   KEY `fk_fecha_mesa_idx` (`id_mesa`),
   CONSTRAINT `fk_fecha_mesa` FOREIGN KEY (`id_mesa`) REFERENCES `tbl_mesa` (`id_mesa`)
-) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +41,7 @@ CREATE TABLE `tbl_fecha` (
 
 LOCK TABLES `tbl_fecha` WRITE;
 /*!40000 ALTER TABLE `tbl_fecha` DISABLE KEYS */;
-INSERT INTO `tbl_fecha` VALUES (55,'2021-11-09','19:57:25',1,'Sala privada 1','Paco'),(56,'2021-11-09','20:42:51',1,'Sala privada 1','Manuel');
+INSERT INTO `tbl_fecha` VALUES (55,'2021-11-09','19:57:25',1,'Sala privada 1','Paco'),(56,'2021-11-09','20:42:51',1,'Sala privada 1','Manuel'),(62,'2021-12-19','13:00',2,'Terraza','Sergio'),(63,'2021-12-19','20:00',2,'Terraza','Manin'),(64,'2021-12-29','23:00',20,'Comedor','TEST'),(65,'2021-12-20','13:00',2,'Terraza','');
 /*!40000 ALTER TABLE `tbl_fecha` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -54,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-12-16 18:00:40
+-- Dump completed on 2021-12-20 18:17:38
